@@ -4,6 +4,11 @@ trigger:
     - main
 variables:
   - group: default_credentials
+parameters:
+  - name: variable_check
+    type: boolean
+    displayName: "variablecheck default false"
+    default: false
 stages:
   - stage: version_checking
     displayName: "version checking"
@@ -19,20 +24,20 @@ stages:
               echo "version checking"
               git --version
             displayName: "git version checking"
-      
-      - job: variablecheck
-        dependsOn: versioncheck
-        displayName: "variablecheck" 
-        pool:
-          name: wsl
-        workspace: 
-          clean: all
-        steps:
-          - bash: |
-              echo "variable checking"
-              echo "GIT_USER: $GIT_USER"
-              echo "DOCKER_USER: $DOCKER_USER"
-            displayName: "variable checking"
-            env: 
-              GIT_USER: $(github_user)
-              DOCKER_USER: $(docker_user)
+      - ${{ if eq(parameters.variable_check, 'true') }}:
+        - job: variablecheck
+          dependsOn: versioncheck
+          displayName: "variablecheck" 
+          pool:
+            name: wsl
+          workspace: 
+            clean: all
+          steps:
+            - bash: |
+                echo "variable checking"
+                echo "GIT_USER: $GIT_USER"
+                echo "DOCKER_USER: $DOCKER_USER"
+              displayName: "variable checking"
+              env: 
+                GIT_USER: $(github_user)
+                DOCKER_USER: $(docker_user)
