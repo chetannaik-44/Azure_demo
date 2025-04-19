@@ -19,3 +19,20 @@ stages:
               echo "version checking"
               git --version
             displayName: "git version checking"
+      
+      - job: variablecheck
+        dependsOn: versioncheck
+        displayName: "variablecheck" 
+        pool:
+          name: wsl
+        workspace: 
+          clean: all
+        steps:
+          - bash: |
+              echo "variable checking"
+              echo "$(GIT_USER)"
+               echo "$(DOCKER_USER)"
+            displayName: "git variable checking"
+            env: 
+              GIT_USER: $(github_user)
+              DOCKER_USER: $(docker_user)
