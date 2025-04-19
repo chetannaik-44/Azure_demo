@@ -4,8 +4,10 @@ trigger:
     - main
 variables:
   - group: default_credentials
-  - group: github
-  - group: docker-hub
+  - name: azureSubcriptionEndpoint
+    value: github
+  - name: azureSubcriptionEndpoint
+    value: docker-hub
 stages:
   - stage: version checking
     displayName: "version checking"
@@ -20,4 +22,4 @@ stages:
           - bash: |
               echo "version checking"
               git --version
-            dispalyName: "git version checking"
+            displayName: "git version checking"
