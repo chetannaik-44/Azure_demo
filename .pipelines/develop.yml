@@ -1,0 +1,23 @@
+trigger:
+  branches:
+    include:  
+    - main
+variables:
+  - group: default_credentials
+  - group: github
+  - group: docker-hub
+stages:
+  - stage: version checking
+    displayName: "version checking"
+    jobs:
+      - job: version_check
+        displayName: "version_check" 
+        pool:
+          name: wsl
+        workspace: 
+          clean: all
+        steps:
+          - bash: |
+              echo "version checking"
+              git --version
+            dispalyName: "git version checking"
