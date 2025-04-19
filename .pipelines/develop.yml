@@ -12,8 +12,8 @@ stages:
   - stage: version checking
     displayName: "version checking"
     jobs:
-      - job: version_check
-        displayName: "version_check" 
+      - job: versioncheck
+        displayName: "versioncheck" 
         pool:
           name: wsl
         workspace: 
