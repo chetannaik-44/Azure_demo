@@ -4,12 +4,8 @@ trigger:
     - main
 variables:
   - group: default_credentials
-  - name: azureSubcriptionEndpoint
-    value: github
-  - name: azureSubcriptionEndpoint
-    value: docker-hub
 stages:
-  - stage: version checking
+  - stage: version_checking
     displayName: "version checking"
     jobs:
       - job: versioncheck
