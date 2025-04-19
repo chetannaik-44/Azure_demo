@@ -30,8 +30,8 @@ stages:
         steps:
           - bash: |
               echo "variable checking"
-              echo "$(GIT_USER)"
-              echo "$(DOCKER_USER)"
+              echo "GIT_USER: $GIT_USER"
+              echo "DOCKER_USER: $DOCKER_USER"
             displayName: "variable checking"
             env: 
               GIT_USER: $(github_user)
