@@ -31,8 +31,8 @@ stages:
           - bash: |
               echo "variable checking"
               echo "$(GIT_USER)"
-               echo "$(DOCKER_USER)"
-            displayName: "git variable checking"
+              echo "$(DOCKER_USER)"
+            displayName: "variable checking"
             env: 
               GIT_USER: $(github_user)
               DOCKER_USER: $(docker_user)
