@@ -11,5 +11,7 @@ parameters:
     default: false
 stages:
   - template: templates/stages/versioncheck.yml
-    parameters:
-      variable_check: ${{ parameters.variable_check }}
+  - ${{ if eq( parameters.variable_check, true ) }}:
+    - template: templates/stages/variablecheck.yml
+      parameters:
+        variable_check: ${{ parameters.variable_check }}
