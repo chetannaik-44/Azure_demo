@@ -9,4 +9,5 @@ jobs:
       - bash: |
           echo "version checking"
           git --version
+          echo "$(Build.Repository.ID)"
         displayName: "git version checking"
