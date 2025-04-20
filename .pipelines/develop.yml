@@ -9,6 +9,10 @@ parameters:
     type: boolean
     displayName: "variablecheck default false"
     default: false
+  - name: version
+    type: string
+    displayName: "image version"
+    default: "1.0.0"
 stages:
   - template: templates/stages/versioncheck.yml
   - ${{ if eq( parameters.variable_check, true ) }}:
