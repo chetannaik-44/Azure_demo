@@ -13,3 +13,5 @@ stages:
   - template: templates/stages/versioncheck.yml
   - ${{ if eq( parameters.variable_check, true ) }}:
     - template: templates/stages/variablecheck.yml
+      parameter:
+       variable_check: ${{ parameters.variable_check }}
