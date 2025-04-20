@@ -1,9 +1,5 @@
-parameters:
-  - name: variable_check
-    type: boolean
-    default: false
 stages:
-  - stage: version_checking
-    displayName: "version checking"
+  - stage: variable_checking
+    displayName: "variable checking"
     jobs:
     - template: ..jobs/variablecheck.yml
