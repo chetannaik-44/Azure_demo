@@ -1,0 +1,12 @@
+parameters:
+  - name: variable_check
+    type: boolean
+    default: false
+stages:
+  - stage: version_checking
+    displayName: "version checking"
+    jobs:
+      - template: ../jobs/versioncheck.yml
+      - ${{ if eq( parameters.variable_check, true )}}
+        - template: ..jobs/variablecheck.yml
+    

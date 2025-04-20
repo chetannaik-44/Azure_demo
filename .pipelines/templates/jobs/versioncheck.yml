@@ -1,0 +1,12 @@
+jobs:
+  - job: versioncheck
+    displayName: "versioncheck"
+    pool:
+      name: wsl
+    workspace:
+      clean: all
+    steps:
+      - bash: |
+          echo "version checking"
+          git --version
+        displayName: "git version checking"

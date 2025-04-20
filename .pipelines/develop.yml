@@ -10,34 +10,6 @@ parameters:
     displayName: "variablecheck default false"
     default: false
 stages:
-  - stage: version_checking
-    displayName: "version checking"
-    jobs:
-      - job: versioncheck
-        displayName: "versioncheck" 
-        pool:
-          name: wsl
-        workspace: 
-          clean: all
-        steps:
-          - bash: |
-              echo "version checking"
-              git --version
-            displayName: "git version checking"
-      - ${{ if eq(parameters.variable_check, 'true') }}:
-        - job: variablecheck
-          dependsOn: versioncheck
-          displayName: "variablecheck" 
-          pool:
-            name: wsl
-          workspace: 
-            clean: all
-          steps:
-            - bash: |
-                echo "variable checking"
-                echo "GIT_USER: $GIT_USER"
-                echo "DOCKER_USER: $DOCKER_USER"
-              displayName: "variable checking"
-              env: 
-                GIT_USER: $(github_user)
-                DOCKER_USER: $(docker_user)
+  - temaplate: stages/versioncheck.yml
+    parameters:
+      variable_check: ${{ parameters.variable_check }}
