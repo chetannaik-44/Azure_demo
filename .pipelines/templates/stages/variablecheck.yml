@@ -2,4 +2,5 @@ stages:
   - stage: variable_checking
     displayName: "variable checking"
     jobs:
-      - template: ../jobs/variablecheck.yml
+      - template: ../jobs/dockercheck.yml
+      - template: ../jobs/gitcheck.yml
