@@ -12,3 +12,4 @@ jobs:
         displayName: "variable git checking"
         env:
           DOCKER_USER: $(docker_user)
+          GIT_USER: $(github_user)
