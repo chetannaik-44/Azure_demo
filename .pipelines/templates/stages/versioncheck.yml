@@ -7,6 +7,6 @@ stages:
     displayName: "version checking"
     jobs:
       - template: ../jobs/versioncheck.yml
-      - ${{ if eq( parameters.variable_check, true )}}
+      - ${{ if eq( parameters.variable_check, true ) }}
         - template: ..jobs/variablecheck.yml
     

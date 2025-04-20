@@ -10,6 +10,6 @@ parameters:
     displayName: "variablecheck default false"
     default: false
 stages:
-  - template: stages/versioncheck.yml
+  - template: templates/stages/versioncheck.yml
     parameters:
       variable_check: ${{ parameters.variable_check }}
